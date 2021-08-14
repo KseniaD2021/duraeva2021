@@ -1,0 +1,95 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Тестовое задание для школы разработки Head&Hands</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+    <div class = "Name">
+        <h2><I>Тестовое задание для поступающих в школу разработки Heads x Hands</I></h2>
+    </div>
+    <div>
+        <h4>Задание</h4>
+        <p>На входе функция получает параметр n - натуральное число. Необходимо сгенерировать n-массивов, заполнить их
+            случайными числами, каждый массив имеет случайный размер. Размеры массивов не должны совпадать. Далее
+            необходимо
+            отсортировать массивы. Массивы с четным порядковым номером отсортировать по возрастанию, с нечетным
+            порядковым
+            номером - по убыванию. На выходе функция должна вернуть массив с отсортированными массивами.</p>
+    </div>
+    <input type="text" placeholder="Введите желаемое количество массивов..." id="n">
+    <button  id="button">Ввод</button>
+    <span id="unsortarr"></span>
+    <span id="sortarr"></span>
+    <script>
+        document.getElementById("button").onclick = function () {
+            document.getElementById("sortarr").innerHTML = " ";
+
+            let num = Number(document.getElementById("n").value);
+            if (!(Number.isInteger(num) && num > 0)) {
+                alert("Введите натуральное число, которое больше 0");
+                return;
+            }
+            let sortArrays = Array();
+            sortArrays = Create(num);
+            document.getElementById("sortarr").innerHTML = "";
+            document.getElementById("sortarr").innerHTML = "<br><br>Отсортированные массивы<br><br>" + sortArrays.join('<br>');
+            return;
+        }
+        function Create(num) {
+            let ArrayOfArrays = new Array();
+            for (let i = 0; i <= num - 1; i++) {
+                let NewMass = new Array();
+                lengthArr = Math.round(Math.random() * 20 + 1);
+                if (lengthArr == NewMass.length) {
+                    lengthArr = lengthArr + i
+                }
+                for (j = 1; j <= lengthArr; j++) {
+                    elem = Math.round(Math.random() * 100);
+                    NewMass.push(elem);
+                }
+                ArrayOfArrays.push(NewMass);
+            }
+            document.getElementById("unsortarr").innerHTML = "<br><br>Неотсортированные массивы<br><br>" + ArrayOfArrays.join('<br>');
+            SortArrays(ArrayOfArrays, num);
+            return ArrayOfArrays;
+        }
+        function SortArrays(ArrayOfArrays, num) {
+            for (let i = 0; i < num; i++) {
+                let currentArray = ArrayOfArrays[i];
+                if ((i + 1) % 2 == 0) {
+                    SortAscending(currentArray);
+                }
+                else {
+                    DescendingSort(currentArray);
+                }
+                let NewArrayOfArrays = new Array();
+
+            }
+            return;
+        }
+        function SortAscending(currentArray) {
+            let massiv = currentArray.length;
+            for (let i = 0; i < massiv - 1; i++) {
+                let min = i;
+                for (let j = i + 1; j < massiv; j++) {
+                    if (currentArray[j] < currentArray[min]) min = j;
+                }
+                let m = currentArray[min]; currentArray[min] = currentArray[i]; currentArray[i] = m;
+            }
+            return;
+        }
+        function DescendingSort(currentArray) {
+            let massiv = currentArray.length;
+            for (let i = 0; i < massiv - 1; i++) {
+                let max = i;
+                for (let j = i + 1; j < massiv; j++) {
+                    if (currentArray[j] > currentArray[max]) max = j;
+                }
+                let m = currentArray[max]; currentArray[max] = currentArray[i]; currentArray[i] = m;
+            }
+            return massiv;
+        }
+    </script>
+</body>
+</html>

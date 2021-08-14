@@ -1,0 +1,27 @@
+body{
+    color: #c2a791;
+    font-size: large;
+    background-color: #141211;
+    text-align: center;
+
+}
+div p{
+    width: 40%;
+    margin-left: 30% ;
+}
+.Name{
+    color: white;
+}
+input{
+    width: 300px;
+    border-radius: 30px ;
+    font-size: 14px;
+    background-color: #c9bcad;
+}
+button{
+    width: 70px;
+    border-radius: 30px ;
+    font-size: 14px;
+    background-color:   #4a3e30 ;
+    color: #c2a791; ;
+}
